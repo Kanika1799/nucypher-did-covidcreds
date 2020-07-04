@@ -1,24 +1,17 @@
-import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
-import { StatusBar } from "expo-status-bar";
 import * as React from "react";
 import {
   StyleSheet,
-  View,
   Button,
+  View,
   Text,
   ScrollView,
   TouchableOpacity,
   TextInput,
-  Image,
 } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 import { Ionicons } from "@expo/vector-icons";
 
-import useCachedResources from "./hooks/useCachedResources";
-import BottomTabNavigator from "./navigation/BottomTabNavigator";
-import LinkingConfiguration from "./navigation/LinkingConfiguration";
-
-const Stack = createStackNavigator();
 function HomeScreen({ navigation }) {
   return (
     <ScrollView
@@ -123,109 +116,7 @@ function HomeScreen({ navigation }) {
     </ScrollView>
   );
 }
-function CredScreen({ navigation }) {
-  return (
-    <View style={styles.container}>
-      <Text
-        style={{
-          color: "black",
-          fontSize: 28,
-          textAlign: "center",
-          marginTop: 35,
-        }}
-      >
-        credential 1 <Ionicons name="md-book" size={32} color="blue" />
-      </Text>
-      <Image
-        source={{ uri: "https://i.imgur.com/TkIrScD.png" }}
-        style={{
-          width: 305,
-          height: 159,
-          marginTop: 40,
-          marginLeft: 30,
-        }}
-      />
-      <Text
-        style={{
-          color: "black",
-          fontSize: 18,
 
-          marginTop: 35,
-        }}
-      >
-        Name: Credential 1 <Ionicons name="md-book" size={32} color="blue" />
-      </Text>
-      <Text
-        style={{
-          color: "black",
-          fontSize: 18,
-
-          marginTop: 35,
-        }}
-      >
-        Issued by: <Ionicons name="md-book" size={32} color="blue" />
-      </Text>
-      <Text
-        style={{
-          color: "black",
-          fontSize: 18,
-
-          marginTop: 35,
-        }}
-      >
-        Email ID: <Ionicons name="md-book" size={32} color="blue" />
-      </Text>
-      <Text
-        style={{
-          color: "black",
-          fontSize: 18,
-
-          marginTop: 35,
-        }}
-      >
-        DID:
-        <Ionicons name="md-book" size={32} color="blue" />
-      </Text>
-      <Text
-        style={{
-          color: "black",
-          fontSize: 18,
-
-          marginTop: 35,
-        }}
-      >
-        Shared With:
-        <Ionicons name="md-book" size={32} color="blue" />
-      </Text>
-      <Text
-        style={{
-          color: "black",
-          fontSize: 18,
-
-          marginTop: 35,
-        }}
-      >
-        Issued On:
-        <Ionicons name="md-book" size={32} color="blue" />
-      </Text>
-
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => navigation.push("Cred")}
-      >
-        <Text style={styles.buttonText}>
-          Done{" "}
-          <Ionicons
-            name="md-checkmark"
-            size={20}
-            marginLeft={25}
-            color="#fff"
-          />
-        </Text>
-      </TouchableOpacity>
-    </View>
-  );
-}
 function UserScreen({ navigation }) {
   return (
     <View style={styles.container}>
@@ -297,137 +188,6 @@ function UserScreen({ navigation }) {
         title="Go to Details... again"
         onPress={() => navigation.push("Details")}
       /> */}
-    </View>
-  );
-}
-function CredentialsScreen({ navigation }) {
-  return (
-    <ScrollView
-      style={styles.container}
-      contentContainerStyle={styles.contentContainer}
-    >
-      <View style={styles.container}>
-        <Text
-          style={{
-            color: "black",
-            fontSize: 28,
-            textAlign: "center",
-            marginTop: 35,
-          }}
-        >
-          My Credentials <Ionicons name="md-book" size={32} color="blue" />
-        </Text>
-      </View>
-      <View style={styles.container}>
-        <Text
-          style={{
-            color: "black",
-            fontSize: 18,
-            marginTop: 35,
-          }}
-          onPress={() => navigation.navigate("Cred")}
-        >
-          Credentials 1<Ionicons name="md-book" size={32} color="blue" />
-        </Text>
-        <Image
-          source={{ uri: "https://i.imgur.com/TkIrScD.png" }}
-          style={{
-            width: 305,
-            height: 159,
-            marginTop: 40,
-            marginLeft: 30,
-          }}
-        />
-
-        <Text
-          style={{
-            color: "#888",
-            fontSize: 18,
-            marginTop: 20,
-            textAlign: "center",
-          }}
-        >
-          To share a photo from your phone with a friend, just press the button
-          below!
-        </Text>
-      </View>
-      <View style={styles.container}>
-        <Text
-          style={{
-            color: "black",
-            fontSize: 18,
-            marginTop: 35,
-          }}
-          onPress={() => navigation.navigate("Cred")}
-        >
-          Credentials 2<Ionicons name="md-book" size={32} color="blue" />
-        </Text>
-        <Image
-          source={{ uri: "https://i.imgur.com/TkIrScD.png" }}
-          style={{
-            width: 305,
-            height: 159,
-            marginTop: 40,
-            marginLeft: 30,
-          }}
-        />
-
-        <Text
-          style={{
-            color: "#888",
-            fontSize: 18,
-            marginTop: 20,
-            textAlign: "center",
-          }}
-        >
-          To share a photo from your phone with a friend, just press the button
-          below!
-        </Text>
-      </View>
-
-      <View>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => navigation.navigate("Issue")}
-        >
-          <Text style={styles.buttonText}>
-            New Issue?{" "}
-            <Ionicons name="md-help" size={20} marginLeft={25} color="#fff" />
-          </Text>
-        </TouchableOpacity>
-      </View>
-    </ScrollView>
-  );
-}
-
-function IssueScreen({ navigation }) {
-  return (
-    <View style={styles.container}>
-      <Text
-        style={{
-          color: "black",
-          fontSize: 28,
-          textAlign: "center",
-          marginTop: 35,
-        }}
-      >
-        Issue A credential <Ionicons name="md-book" size={32} color="blue" />
-      </Text>
-
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => navigation.navigate("Issue")}
-      >
-        <Text style={styles.buttonText}>
-          Done{" "}
-          <Ionicons
-            name="md-checkmark"
-            size={20}
-            marginLeft={25}
-            color="#fff"
-          />
-        </Text>
-      </TouchableOpacity>
     </View>
   );
 }
@@ -519,29 +279,125 @@ function DetailsScreen({ navigation }) {
     </View>
   );
 }
-export default function App(props) {
-  const isLoadingComplete = useCachedResources();
 
-  if (!isLoadingComplete) {
-    return null;
-  } else {
-    return (
+// const Stack = createStackNavigator();
+
+function App({ navigation }) {
+  return (
+    // <NavigationContainer>
+    //   <Stack.Navigator initialRouteName="Home">
+    // <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+    //   <Text>Home Screen</Text>
+    //   <Button
+    //     title="Go to Details"
+    //     onPress={() => navigation.navigate("Details")}
+    //   />
+    //   </View>
+
+    <ScrollView
+      style={styles.container}
+      contentContainerStyle={styles.contentContainer}
+    >
       <View style={styles.container}>
-        <NavigationContainer linking={LinkingConfiguration}>
-          <Stack.Navigator>
-            <Stack.Screen name="Root" component={BottomTabNavigator} />
-            <Stack.Screen name="Home" component={HomeScreen} />
-            <Stack.Screen name="Details" component={DetailsScreen} />
-            <Stack.Screen name="Credentials" component={CredentialsScreen} />
-            <Stack.Screen name="Issue" component={IssueScreen} />
-            <Stack.Screen name="Cred" component={CredScreen} />
-            <Stack.Screen name="User" component={UserScreen} />
-          </Stack.Navigator>
-        </NavigationContainer>
-        <StatusBar style="auto" />
+        <Text
+          style={{
+            color: "black",
+
+            textAlign: "center",
+            marginTop: 15,
+          }}
+        >
+          {" "}
+          <Ionicons
+            name="md-person"
+            size={40}
+            color="blue"
+            marginLeft={80}
+            alignItems="centre"
+          />
+        </Text>
+        <Text
+          style={{
+            color: "black",
+            fontSize: 28,
+            textAlign: "center",
+            marginTop: 5,
+          }}
+        >
+          User1
+        </Text>
+        <Text
+          style={{
+            color: "black",
+            fontSize: 18,
+            textAlign: "center",
+          }}
+        >
+          User1@mail.com
+        </Text>
+        <Text
+          style={{
+            color: "black",
+            fontSize: 18,
+            marginLeft: 30,
+            marginTop: 25,
+            textAlign: "center",
+          }}
+          onPress={() => navigation.navigate("User")}
+        >
+          <Ionicons name="md-person" size={28} color="blue" />
+          User1
+          <Ionicons name="md-arrow-dropright" size={28} color="blue" />
+        </Text>
+        <Text
+          style={{
+            color: "black",
+            fontSize: 18,
+            textAlign: "center",
+          }}
+        >
+          User1@mail.com
+        </Text>
+        <Text
+          style={{
+            color: "black",
+            fontSize: 18,
+            marginLeft: 30,
+            marginTop: 25,
+            textAlign: "center",
+          }}
+          onPress={() => navigation.navigate("User")}
+        >
+          <Ionicons name="md-person" size={28} color="blue" />
+          User2
+          <Ionicons name="md-arrow-dropright" size={28} color="blue" />
+        </Text>
+        <Text
+          style={{
+            color: "black",
+            fontSize: 18,
+            textAlign: "center",
+          }}
+        >
+          User2@mail.com
+        </Text>
       </View>
-    );
-  }
+      <View>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.navigate("Details")}
+        >
+          <Text style={styles.buttonText}>
+            <Ionicons name="md-add" size={20} color="#fff" />
+            New User
+          </Text>
+        </TouchableOpacity>
+      </View>
+    </ScrollView>
+
+    //   </Stack.Navigator>
+    // </NavigationContainer>
+  );
 }
 
 const styles = StyleSheet.create({
@@ -586,3 +442,5 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
 });
+
+export default App;
