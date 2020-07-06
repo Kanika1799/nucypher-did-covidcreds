@@ -5,7 +5,6 @@ import * as React from "react";
 import {
   StyleSheet,
   View,
-  Button,
   Text,
   ScrollView,
   TouchableOpacity,
@@ -13,10 +12,12 @@ import {
   Image,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import { Provider as PaperProvider } from "react-native-paper";
 
 import useCachedResources from "./hooks/useCachedResources";
 import BottomTabNavigator from "./navigation/BottomTabNavigator";
 import LinkingConfiguration from "./navigation/LinkingConfiguration";
+import { Card, Button } from "react-native-paper";
 
 const Stack = createStackNavigator();
 function HomeScreen({ navigation }) {
@@ -125,105 +126,110 @@ function HomeScreen({ navigation }) {
 }
 function CredScreen({ navigation }) {
   return (
-    <View style={styles.container}>
-      <Text
-        style={{
-          color: "black",
-          fontSize: 28,
-          textAlign: "center",
-          marginTop: 35,
-        }}
-      >
-        credential 1 <Ionicons name="md-book" size={32} color="blue" />
-      </Text>
-      <Image
-        source={{ uri: "https://i.imgur.com/TkIrScD.png" }}
-        style={{
-          width: 305,
-          height: 159,
-          marginTop: 40,
-          marginLeft: 30,
-        }}
-      />
-      <Text
-        style={{
-          color: "black",
-          fontSize: 18,
-
-          marginTop: 35,
-        }}
-      >
-        Name: Credential 1 <Ionicons name="md-book" size={32} color="blue" />
-      </Text>
-      <Text
-        style={{
-          color: "black",
-          fontSize: 18,
-
-          marginTop: 35,
-        }}
-      >
-        Issued by: <Ionicons name="md-book" size={32} color="blue" />
-      </Text>
-      <Text
-        style={{
-          color: "black",
-          fontSize: 18,
-
-          marginTop: 35,
-        }}
-      >
-        Email ID: <Ionicons name="md-book" size={32} color="blue" />
-      </Text>
-      <Text
-        style={{
-          color: "black",
-          fontSize: 18,
-
-          marginTop: 35,
-        }}
-      >
-        DID:
-        <Ionicons name="md-book" size={32} color="blue" />
-      </Text>
-      <Text
-        style={{
-          color: "black",
-          fontSize: 18,
-
-          marginTop: 35,
-        }}
-      >
-        Shared With:
-        <Ionicons name="md-book" size={32} color="blue" />
-      </Text>
-      <Text
-        style={{
-          color: "black",
-          fontSize: 18,
-
-          marginTop: 35,
-        }}
-      >
-        Issued On:
-        <Ionicons name="md-book" size={32} color="blue" />
-      </Text>
-
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => navigation.push("Cred")}
-      >
-        <Text style={styles.buttonText}>
-          Done{" "}
-          <Ionicons
-            name="md-checkmark"
-            size={20}
-            marginLeft={25}
-            color="#fff"
-          />
+    <ScrollView
+      style={styles.container}
+      contentContainerStyle={styles.contentContainer}
+    >
+      <View style={styles.container}>
+        <Text
+          style={{
+            color: "black",
+            fontSize: 28,
+            textAlign: "center",
+            marginTop: 35,
+          }}
+        >
+          credential 1 <Ionicons name="md-book" size={32} color="blue" />
         </Text>
-      </TouchableOpacity>
-    </View>
+        <Image
+          source={{ uri: "https://i.imgur.com/TkIrScD.png" }}
+          style={{
+            width: 305,
+            height: 159,
+            marginTop: 40,
+            marginLeft: 30,
+          }}
+        />
+        <Text
+          style={{
+            color: "black",
+            fontSize: 18,
+
+            marginTop: 35,
+          }}
+        >
+          Name: Credential 1 <Ionicons name="md-book" size={32} color="blue" />
+        </Text>
+        <Text
+          style={{
+            color: "black",
+            fontSize: 18,
+
+            marginTop: 35,
+          }}
+        >
+          Issued by: <Ionicons name="md-book" size={32} color="blue" />
+        </Text>
+        <Text
+          style={{
+            color: "black",
+            fontSize: 18,
+
+            marginTop: 35,
+          }}
+        >
+          Email ID: <Ionicons name="md-book" size={32} color="blue" />
+        </Text>
+        <Text
+          style={{
+            color: "black",
+            fontSize: 18,
+
+            marginTop: 35,
+          }}
+        >
+          DID:
+          <Ionicons name="md-book" size={32} color="blue" />
+        </Text>
+        <Text
+          style={{
+            color: "black",
+            fontSize: 18,
+
+            marginTop: 35,
+          }}
+        >
+          Shared With:
+          <Ionicons name="md-book" size={32} color="blue" />
+        </Text>
+        <Text
+          style={{
+            color: "black",
+            fontSize: 18,
+
+            marginTop: 35,
+          }}
+        >
+          Issued On:
+          <Ionicons name="md-book" size={32} color="blue" />
+        </Text>
+
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.push("Cred")}
+        >
+          <Text style={styles.buttonText}>
+            Done{" "}
+            <Ionicons
+              name="md-checkmark"
+              size={20}
+              marginLeft={25}
+              color="#fff"
+            />
+          </Text>
+        </TouchableOpacity>
+      </View>
+    </ScrollView>
   );
 }
 function UserScreen({ navigation }) {
@@ -317,8 +323,14 @@ function CredentialsScreen({ navigation }) {
         >
           My Credentials <Ionicons name="md-book" size={32} color="blue" />
         </Text>
+        <Card>
+          <Card.Actions>
+            <Button>Cancel</Button>
+            <Button>Ok</Button>
+          </Card.Actions>
+        </Card>
       </View>
-      <View style={styles.container}>
+      {/* <View style={styles.container}>
         <Text
           style={{
             color: "black",
@@ -383,7 +395,7 @@ function CredentialsScreen({ navigation }) {
           To share a photo from your phone with a friend, just press the button
           below!
         </Text>
-      </View>
+      </View> */}
 
       <View>
         <TouchableOpacity
@@ -527,17 +539,19 @@ export default function App(props) {
   } else {
     return (
       <View style={styles.container}>
-        <NavigationContainer linking={LinkingConfiguration}>
-          <Stack.Navigator>
-            <Stack.Screen name="Root" component={BottomTabNavigator} />
-            <Stack.Screen name="Home" component={HomeScreen} />
-            <Stack.Screen name="Details" component={DetailsScreen} />
-            <Stack.Screen name="Credentials" component={CredentialsScreen} />
-            <Stack.Screen name="Issue" component={IssueScreen} />
-            <Stack.Screen name="Cred" component={CredScreen} />
-            <Stack.Screen name="User" component={UserScreen} />
-          </Stack.Navigator>
-        </NavigationContainer>
+        <PaperProvider>
+          <NavigationContainer linking={LinkingConfiguration}>
+            <Stack.Navigator>
+              <Stack.Screen name="Root" component={BottomTabNavigator} />
+              <Stack.Screen name="Home" component={HomeScreen} />
+              <Stack.Screen name="Details" component={DetailsScreen} />
+              <Stack.Screen name="Credentials" component={CredentialsScreen} />
+              <Stack.Screen name="Issue" component={IssueScreen} />
+              <Stack.Screen name="Cred" component={CredScreen} />
+              <Stack.Screen name="User" component={UserScreen} />
+            </Stack.Navigator>
+          </NavigationContainer>
+        </PaperProvider>
         <StatusBar style="auto" />
       </View>
     );

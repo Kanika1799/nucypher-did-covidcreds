@@ -10,15 +10,19 @@ import {
 } from "react-native";
 import { ScrollView, TextInput } from "react-native-gesture-handler";
 import { Ionicons } from "@expo/vector-icons";
+import { Button, List, Headline, Subheading } from "react-native-paper";
 
 import { MonoText } from "../components/StyledText";
 import { createIconSet } from "@expo/vector-icons";
 
 export default function HomeScreen() {
+  const [expanded, setExpanded] = React.useState(true);
+
+  const handlePress = () => setExpanded(!expanded);
   return (
     <View style={styles.container}>
       <View style={styles.container}>
-        <Text
+        {/* <Text
           style={{
             color: "black",
             fontSize: 28,
@@ -28,9 +32,21 @@ export default function HomeScreen() {
         >
           Share My Credentials{" "}
           <Ionicons name="md-share" size={32} color="blue" />
-        </Text>
-
-        <Text
+        </Text> */}
+        <Headline style={{ textAlign: "center", marginTop: 20 }}>
+          {" "}
+          Share My Credentials
+          <Ionicons
+            name="md-share"
+            size={22}
+            color="#6200ee"
+            paddingLeft={30}
+          />
+        </Headline>
+        <Subheading style={{ textAlign: "center", marginTop: 20 }}>
+          <Ionicons name="md-time" size={20} color="#6200ee" /> Share History
+        </Subheading>
+        {/* <Text
           style={{
             color: "black",
             fontSize: 18,
@@ -38,47 +54,43 @@ export default function HomeScreen() {
             marginTop: 25,
           }}
         >
-          <Ionicons name="md-clock" size={28} color="blue" /> Share History
-        </Text>
-        <Text
-          style={{
-            color: "black",
-            fontSize: 18,
-            marginLeft: 30,
-            marginTop: 25,
-          }}
-        >
-          <Ionicons name="md-person" size={28} color="blue" /> Ed{" "}
-          <Ionicons name="md-arrow-down" size={28} color="blue" />
-        </Text>
-        <Text
-          style={{
-            color: "black",
-            fontSize: 18,
-            marginLeft: 30,
-            marginTop: 25,
-          }}
-        >
-          <Ionicons name="md-person" size={28} color="blue" /> David{" "}
-          <Ionicons
-            name="md-arrow-down"
-            size={28}
-            color="blue"
-            marginLeft={30}
-            alignItems="right"
-          />
-        </Text>
-      </View>
+          <Ionicons name="md-time" size={28} color="#6200ee" /> Share History
+        </Text> */}
 
-      <TouchableOpacity
-        onPress={() => alert("Hello, world!")}
-        style={styles.button}
+        <List.Accordion
+          title="Ed"
+          left={(props) => <List.Icon {...props} icon="account" />}
+        >
+          <List.Item title="First item" />
+          <List.Item title="Second item" />
+        </List.Accordion>
+
+        <List.Accordion
+          title="David"
+          left={(props) => <List.Icon {...props} icon="account" />}
+          expanded={expanded}
+          onPress={handlePress}
+        >
+          <List.Item title="First item" />
+          <List.Item title="Second item" />
+        </List.Accordion>
+      </View>
+      <Button
+        icon="share"
+        mode="contained"
+        style={{
+          width: 140,
+          height: 40,
+          textAlign: "center",
+          marginBottom: 20,
+          borderRadius: 20,
+          marginStart: 110,
+        }}
+        onPress={() => console.log("Pressed")}
       >
-        <Text style={styles.buttonText}>
-          Share{" "}
-          <Ionicons name="md-share" size={20} marginLeft={25} color="#fff" />
-        </Text>
-      </TouchableOpacity>
+        Share
+      </Button>
+
       {/**     <ScrollView
         style={styles.container}
         contentContainerStyle={styles.contentContainer}
@@ -271,6 +283,7 @@ const styles = StyleSheet.create({
     marginLeft: 120,
     borderRadius: 25,
     marginBottom: 25,
+    justifyContent: "flex-end",
   },
   buttonText: {
     fontSize: 20,

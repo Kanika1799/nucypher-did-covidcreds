@@ -6,6 +6,7 @@ import HomeScreen from "../screens/HomeScreen";
 import ProfileScreen from "../screens/ProfileScreen";
 import CredentialScreen from "../screens/CredentialScreen";
 import IssueScreen from "../screens/ProfileScreen";
+import { BottomNavigation, Text } from "react-native-paper";
 
 const BottomTab = createBottomTabNavigator();
 const INITIAL_ROUTE_NAME = "Home";

@@ -5,6 +5,8 @@ import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import { RectButton, ScrollView } from "react-native-gesture-handler";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
+import { Card, Button } from "react-native-paper";
+
 function CredentialsScreen({ navigation }) {
   return (
     <ScrollView
@@ -22,6 +24,12 @@ function CredentialsScreen({ navigation }) {
         >
           My Credentials <Ionicons name="md-book" size={32} color="blue" />
         </Text>
+        <Card>
+          <Card.Actions>
+            <Button>Cancel</Button>
+            <Button>Ok</Button>
+          </Card.Actions>
+        </Card>
       </View>
       <View style={styles.container}>
         {" "}
