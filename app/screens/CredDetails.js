@@ -1,4 +1,5 @@
 import * as React from "react";
+import QRCode from "react-native-qrcode-generator";
 
 import {
   StyleSheet,
@@ -12,7 +13,7 @@ import {
 } from "react-native";
 
 import { Ionicons } from "@expo/vector-icons";
-
+import { Avatar, Card, IconButton } from "react-native-paper";
 
 export default class CredScreen extends React.Component {
   constructor(props) {
@@ -20,13 +21,51 @@ export default class CredScreen extends React.Component {
 
     this.state = {
       creds: [],
+      text: "Hello",
     };
   }
 
   render() {
     return (
       <View style={styles.container}>
-        <Text
+        <Card.Title
+          title="Credential Name"
+          subtitle="Name"
+          right={(props) => (
+            <Image
+              source={{
+                uri:
+                  "https://www.pinclipart.com/picdir/middle/165-1653686_female-user-icon-png-download-user-colorful-icon.png",
+              }}
+              style={{
+                width: 100,
+                height: 100,
+                marginRight: 20,
+                marginTop: 20,
+              }}
+            />
+          )}
+        />
+        <Card.Title title="Credential Issued By" subtitle="Issued By" />
+        <Card
+          style={{
+            marginTop: 40,
+            marginStart: 75,
+            backgroundColor: "transparent",
+            border: "none",
+            width: 70,
+          }}
+        >
+          <QRCode
+            value={this.state.text}
+            size={200}
+            bgColor="black"
+            fgColor="white"
+            textAlign="center"
+            padding={60}
+          />
+        </Card>
+        {/* <Text
           style={{
             color: "black",
             fontSize: 28,
@@ -107,7 +146,7 @@ export default class CredScreen extends React.Component {
         >
           Issued On:
           <Ionicons name="md-book" size={32} color="blue" />
-        </Text>
+        </Text> */}
 
         {/* <TouchableOpacity
           style={styles.button}
@@ -129,45 +168,44 @@ export default class CredScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: "#fafafa",
-    },
-    contentContainer: {
-      paddingTop: 15,
-    },
-    optionIconContainer: {
-      marginRight: 12,
-    },
-    option: {
-      backgroundColor: "#fdfdfd",
-      paddingHorizontal: 15,
-      paddingVertical: 15,
-      borderWidth: StyleSheet.hairlineWidth,
-      borderBottomWidth: 0,
-      borderColor: "#ededed",
-    },
-    lastOption: {
-      borderBottomWidth: StyleSheet.hairlineWidth,
-    },
-    optionText: {
-      fontSize: 15,
-      alignSelf: "flex-start",
-      marginTop: 1,
-    },
-    button: {
-      backgroundColor: "blue",
-      padding: 20,
-      borderRadius: 5,
-      width: 130,
-      marginLeft: 120,
-      borderRadius: 25,
-      marginBottom: 25,
-    },
-    buttonText: {
-      fontSize: 20,
-      color: "#fff",
-      textAlign: "center",
-    },
-  });
-  
+  container: {
+    flex: 1,
+    backgroundColor: "#fafafa",
+  },
+  contentContainer: {
+    paddingTop: 15,
+  },
+  optionIconContainer: {
+    marginRight: 12,
+  },
+  option: {
+    backgroundColor: "#fdfdfd",
+    paddingHorizontal: 15,
+    paddingVertical: 15,
+    borderWidth: StyleSheet.hairlineWidth,
+    borderBottomWidth: 0,
+    borderColor: "#ededed",
+  },
+  lastOption: {
+    borderBottomWidth: StyleSheet.hairlineWidth,
+  },
+  optionText: {
+    fontSize: 15,
+    alignSelf: "flex-start",
+    marginTop: 1,
+  },
+  button: {
+    backgroundColor: "blue",
+    padding: 20,
+    borderRadius: 5,
+    width: 130,
+    marginLeft: 120,
+    borderRadius: 25,
+    marginBottom: 25,
+  },
+  buttonText: {
+    fontSize: 20,
+    color: "#fff",
+    textAlign: "center",
+  },
+});

@@ -59,10 +59,10 @@ function getHeaderTitle(route) {
 
   switch (routeName) {
     case "Home":
-      return "App Name";
+      return "Immunity Creds";
     case "Links":
-      return "App Name";
+      return "Immunity Creds";
     case "Profile":
-      return "App Name";
+      return "Immunity Creds";
   }
 }
