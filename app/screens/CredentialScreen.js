@@ -6,23 +6,24 @@ import { RectButton, ScrollView } from "react-native-gesture-handler";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
-
 export default class CredentialsScreen extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      creds: []
-    } 
+      creds: [],
+    };
   }
 
   componentDidMount() {
-    fetch('http://127.0.0.1:5000/get_creds/did:cred:5a13a432-bf10-11ea-aa79-f4d10855b531')
-    .then(resp => resp.json())
-    .then((json) => {
-      this.setState({creds: json})
-      console.log(json)
-    })
+    fetch(
+      "http://127.0.0.1:5000/get_creds/did:cred:5a13a432-bf10-11ea-aa79-f4d10855b531"
+    )
+      .then((resp) => resp.json())
+      .then((json) => {
+        this.setState({ creds: json });
+        console.log(json);
+      });
   }
 
   render() {
@@ -44,44 +45,43 @@ export default class CredentialsScreen extends React.Component {
           </Text>
         </View>
 
-        {
-          this.state.creds.map((cred) => 
+        {this.state.creds.map((cred) => (
           <View style={styles.container}>
-          <Text
-            style={{
-              color: "black",
-              fontSize: 18,
-              marginTop: 35,
-            }}
-            onPress={() => this.props.navigation.navigate("Cred")}
-          >
-            Credentials 1<Ionicons name="md-book" size={32} color="blue" />
-          </Text>
-          <Image
-            source={{ uri: "https://i.imgur.com/TkIrScD.png" }}
-            style={{ width: 305, height: 159, marginTop: 40, marginLeft: 30 }}
-          />
+            <Text
+              style={{
+                color: "black",
+                fontSize: 18,
+                marginTop: 35,
+              }}
+              onPress={() => this.props.navigation.navigate("Cred")}
+            >
+              {cred.name} {"\n"}{" "}
+              <Ionicons name="md-book" size={32} color="blue" />
+            </Text>
+            <Text>Cred Issued From :- {cred.cred_issued_from}</Text>
+            <Image
+              source={{ uri: "https://i.imgur.com/TkIrScD.png" }}
+              style={{ width: 305, height: 159, marginTop: 40, marginLeft: 30 }}
+            />
 
-          <Text
-            style={{
-              color: "#888",
-              fontSize: 18,
-              marginTop: 20,
-              textAlign: "center",
-            }}
-          >
-            To share a photo from your phone with a friend, just press the
-            button below!
-          </Text>
-        </View>
+            <Text
+              style={{
+                color: "#888",
+                fontSize: 18,
+                marginTop: 20,
+                textAlign: "center",
+              }}
+            >
+              To share a photo from your phone with a friend, just press the
+              button below!
+            </Text>
+          </View>
+        ))}
 
-        )
-        }
-        
         <View>
           <TouchableOpacity
             style={styles.button}
-            onPress={() => navigation.navigate("Issue")}
+            onPress={() => this.props.navigation.navigate("Issue")}
           >
             <Text style={styles.buttonText}>
               New Issue?{" "}

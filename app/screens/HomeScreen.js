@@ -14,127 +14,111 @@ import { Ionicons } from "@expo/vector-icons";
 import { MonoText } from "../components/StyledText";
 import { createIconSet } from "@expo/vector-icons";
 
-export default function HomeScreen() {
-  return (
-    <View style={styles.container}>
+export default class HomeScreen extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      requests: [],
+      access_shared: [],
+    };
+  }
+
+  componentDidMount() {
+    fetch(
+      "http://127.0.0.1:5000/get_requests/did:cred:5a13a432-bf10-11ea-aa79-f4d10855b531/1"
+    )
+      .then((resp) => resp.json())
+      .then((json) => {
+        this.setState({ requests: json });
+        console.log(json);
+      });
+  }
+
+  render() {
+    return (
       <View style={styles.container}>
-        <Text
-          style={{
-            color: "black",
-            fontSize: 28,
-            textAlign: "center",
-            marginTop: 35,
-          }}
-        >
-          Share My Credentials{" "}
-          <Ionicons name="md-share" size={32} color="blue" />
-        </Text>
-
-        <Text
-          style={{
-            color: "black",
-            fontSize: 18,
-            textAlign: "center",
-            marginTop: 25,
-          }}
-        >
-          <Ionicons name="md-clock" size={28} color="blue" /> Share History
-        </Text>
-        <Text
-          style={{
-            color: "black",
-            fontSize: 18,
-            marginLeft: 30,
-            marginTop: 25,
-          }}
-        >
-          <Ionicons name="md-person" size={28} color="blue" /> Ed{" "}
-          <Ionicons name="md-arrow-down" size={28} color="blue" />
-        </Text>
-        <Text
-          style={{
-            color: "black",
-            fontSize: 18,
-            marginLeft: 30,
-            marginTop: 25,
-          }}
-        >
-          <Ionicons name="md-person" size={28} color="blue" /> David{" "}
-          <Ionicons
-            name="md-arrow-down"
-            size={28}
-            color="blue"
-            marginLeft={30}
-            alignItems="right"
-          />
-        </Text>
-      </View>
-
-      <TouchableOpacity
-        onPress={() => alert("Hello, world!")}
-        style={styles.button}
-      >
-        <Text style={styles.buttonText}>
-          Share{" "}
-          <Ionicons name="md-share" size={20} marginLeft={25} color="#fff" />
-        </Text>
-      </TouchableOpacity>
-      {/**     <ScrollView
-        style={styles.container}
-        contentContainerStyle={styles.contentContainer}
-      >
-        <View style={styles.welcomeContainer}>
-          <Image
-            source={
-              __DEV__
-                ? require("../assets/images/robot-dev.png")
-                : require("../assets/images/robot-prod.png")
-            }
-            style={styles.welcomeImage}
-          />
-        </View>
-
-        <ScrollView>
-          <View>
-            <Text>Some more text</Text>
-            <Image
-              source={{ uri: "https://reactnative.dev/docs/assets/p_cat2.png" }}
-              style={{ width: 200, height: 200 }}
-            />
-          </View>
-          <TextInput
+        <View style={styles.container}>
+          <Text
             style={{
-              height: 40,
-              borderColor: "gray",
-              borderWidth: 1,
+              color: "black",
+              fontSize: 28,
+              textAlign: "center",
+              marginTop: 35,
             }}
-            defaultValue="You can type in me"
-          />
-        </ScrollView>
-        <View style={styles.helpContainer}>
-          <TouchableOpacity onPress={handleHelpPress} style={styles.helpLink}>
-            <Text style={styles.helpLinkText}>
-              Help, it didn’t automatically reload!
+          >
+            Share My Credentials{" "}
+            <Ionicons name="md-share" size={32} color="blue" />
+          </Text>
+
+          <Text
+            style={{
+              color: "black",
+              fontSize: 18,
+              textAlign: "center",
+              marginTop: 25,
+            }}
+          >
+            <Ionicons name="md-clock" size={28} color="blue" /> Credentials
+            Access Requests
+          </Text>
+          {this.state.requests.map((request) => (
+            <Text
+              style={{
+                color: "black",
+                fontSize: 18,
+                marginLeft: 30,
+                marginTop: 25,
+              }}
+            >
+              <Ionicons name="md-person" size={28} color="blue" /> {"\n"}{" "}
+              Requested From - {request.request_from}
+              {"\n"}
+              Cred Requested - {request.cred_id}
             </Text>
-          </TouchableOpacity>
+          ))}
+          <Text
+            style={{
+              color: "black",
+              fontSize: 18,
+              textAlign: "center",
+              marginTop: 25,
+            }}
+          >
+            <Ionicons name="md-clock" size={28} color="blue" /> Credentials
+            Access Shared
+          </Text>
+          <Text
+            style={{
+              color: "black",
+              fontSize: 18,
+              marginLeft: 30,
+              marginTop: 25,
+            }}
+          >
+            <Ionicons name="md-person" size={28} color="blue" /> David{" "}
+            <Ionicons
+              name="md-arrow-down"
+              size={28}
+              color="blue"
+              marginLeft={30}
+              alignItems="right"
+            />
+          </Text>
         </View>
-      </ScrollView>
 
-      <View style={styles.tabBarInfoContainer}>
-        <Text style={styles.tabBarInfoText}>
-          This is a tab bar. You can edit it in:
-        </Text>
-
-        <View
-          style={[styles.codeHighlightContainer, styles.navigationFilename]}
+        <TouchableOpacity
+          onPress={() => alert("Hello, world!")}
+          style={styles.button}
         >
-          <MonoText style={styles.codeHighlightText}>
-            navigation/BottomTabNavigator.js
-          </MonoText>
-        </View>
-      </View>  */}
-    </View>
-  );
+          <Text style={styles.buttonText}>
+            Share{" "}
+            <Ionicons name="md-share" size={20} marginLeft={25} color="#fff" />
+          </Text>
+        </TouchableOpacity>
+      </View>
+    );
+  }
 }
 
 HomeScreen.navigationOptions = {
