@@ -6,6 +6,7 @@ import HomeScreen from "../screens/HomeScreen";
 import ProfileScreen from "../screens/ProfileScreen";
 import CredentialScreen from "../screens/CredentialScreen";
 import IssueScreen from "../screens/ProfileScreen";
+import UserScreen from "../screens/UserScreen";
 
 const BottomTab = createBottomTabNavigator();
 const INITIAL_ROUTE_NAME = "Home";
@@ -40,7 +41,7 @@ export default function BottomTabNavigator({ navigation, route }) {
       />
       <BottomTab.Screen
         name="Profile"
-        component={ProfileScreen}
+        component={UserScreen}
         options={{
           title: "Profile",
           tabBarIcon: ({ focused }) => (
