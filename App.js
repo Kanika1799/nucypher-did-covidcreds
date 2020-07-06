@@ -5,6 +5,7 @@ import * as React from "react";
 import {
   StyleSheet,
   View,
+  Button,
   Text,
   ScrollView,
   TouchableOpacity,
@@ -17,7 +18,6 @@ import { Provider as PaperProvider } from "react-native-paper";
 import useCachedResources from "./hooks/useCachedResources";
 import BottomTabNavigator from "./navigation/BottomTabNavigator";
 import LinkingConfiguration from "./navigation/LinkingConfiguration";
-import { Card, Button } from "react-native-paper";
 
 const Stack = createStackNavigator();
 function HomeScreen({ navigation }) {
@@ -313,6 +313,12 @@ function CredentialsScreen({ navigation }) {
       contentContainerStyle={styles.contentContainer}
     >
       <View style={styles.container}>
+        <Card>
+          <Card.Actions>
+            <Button>Cancel</Button>
+            <Button>Ok</Button>
+          </Card.Actions>
+        </Card>
         <Text
           style={{
             color: "black",
@@ -323,14 +329,8 @@ function CredentialsScreen({ navigation }) {
         >
           My Credentials <Ionicons name="md-book" size={32} color="blue" />
         </Text>
-        <Card>
-          <Card.Actions>
-            <Button>Cancel</Button>
-            <Button>Ok</Button>
-          </Card.Actions>
-        </Card>
       </View>
-      {/* <View style={styles.container}>
+      <View style={styles.container}>
         <Text
           style={{
             color: "black",
@@ -395,7 +395,7 @@ function CredentialsScreen({ navigation }) {
           To share a photo from your phone with a friend, just press the button
           below!
         </Text>
-      </View> */}
+      </View>
 
       <View>
         <TouchableOpacity
