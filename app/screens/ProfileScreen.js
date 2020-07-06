@@ -12,110 +12,110 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { Ionicons } from "@expo/vector-icons";
 
-function HomeScreen({ navigation }) {
-  return (
-    <ScrollView
-      style={styles.container}
-      contentContainerStyle={styles.contentContainer}
-    >
-      <View style={styles.container}>
-        <Text
-          style={{
-            color: "black",
+// function HomeScreen({ navigation }) {
+//   return (
+//     <ScrollView
+//       style={styles.container}
+//       contentContainerStyle={styles.contentContainer}
+//     >
+//       <View style={styles.container}>
+//         <Text
+//           style={{
+//             color: "black",
 
-            textAlign: "center",
-            marginTop: 15,
-          }}
-        >
-          {" "}
-          <Ionicons
-            name="md-person"
-            size={40}
-            color="blue"
-            marginLeft={80}
-            alignItems="centre"
-          />
-        </Text>
-        <Text
-          style={{
-            color: "black",
-            fontSize: 28,
-            textAlign: "center",
-            marginTop: 5,
-          }}
-        >
-          User1
-        </Text>
-        <Text
-          style={{
-            color: "black",
-            fontSize: 18,
-            textAlign: "center",
-          }}
-        >
-          User1@mail.com
-        </Text>
-        <Text
-          style={{
-            color: "black",
-            fontSize: 18,
-            marginLeft: 30,
-            marginTop: 25,
-            textAlign: "center",
-          }}
-          onPress={() => navigation.navigate("User")}
-        >
-          <Ionicons name="md-person" size={28} color="blue" />
-          User1
-          <Ionicons name="md-arrow-dropright" size={28} color="blue" />
-        </Text>
-        <Text
-          style={{
-            color: "black",
-            fontSize: 18,
-            textAlign: "center",
-          }}
-        >
-          User1@mail.com
-        </Text>
-        <Text
-          style={{
-            color: "black",
-            fontSize: 18,
-            marginLeft: 30,
-            marginTop: 25,
-            textAlign: "center",
-          }}
-          onPress={() => navigation.navigate("User")}
-        >
-          <Ionicons name="md-person" size={28} color="blue" />
-          User2
-          <Ionicons name="md-arrow-dropright" size={28} color="blue" />
-        </Text>
-        <Text
-          style={{
-            color: "black",
-            fontSize: 18,
-            textAlign: "center",
-          }}
-        >
-          User2@mail.com
-        </Text>
-      </View>
-      <View>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => navigation.navigate("Details")}
-        >
-          <Text style={styles.buttonText}>
-            Share{" "}
-            <Ionicons name="md-share" size={20} marginLeft={25} color="#fff" />
-          </Text>
-        </TouchableOpacity>
-      </View>
-    </ScrollView>
-  );
-}
+//             textAlign: "center",
+//             marginTop: 15,
+//           }}
+//         >
+//           {" "}
+//           <Ionicons
+//             name="md-person"
+//             size={40}
+//             color="blue"
+//             marginLeft={80}
+//             alignItems="centre"
+//           />
+//         </Text>
+//         <Text
+//           style={{
+//             color: "black",
+//             fontSize: 28,
+//             textAlign: "center",
+//             marginTop: 5,
+//           }}
+//         >
+//           User1
+//         </Text>
+//         <Text
+//           style={{
+//             color: "black",
+//             fontSize: 18,
+//             textAlign: "center",
+//           }}
+//         >
+//           User1@mail.com
+//         </Text>
+//         <Text
+//           style={{
+//             color: "black",
+//             fontSize: 18,
+//             marginLeft: 30,
+//             marginTop: 25,
+//             textAlign: "center",
+//           }}
+//           onPress={() => navigation.navigate("User")}
+//         >
+//           <Ionicons name="md-person" size={28} color="blue" />
+//           User1
+//           <Ionicons name="md-arrow-dropright" size={28} color="blue" />
+//         </Text>
+//         <Text
+//           style={{
+//             color: "black",
+//             fontSize: 18,
+//             textAlign: "center",
+//           }}
+//         >
+//           User1@mail.com
+//         </Text>
+//         <Text
+//           style={{
+//             color: "black",
+//             fontSize: 18,
+//             marginLeft: 30,
+//             marginTop: 25,
+//             textAlign: "center",
+//           }}
+//           onPress={() => navigation.navigate("User")}
+//         >
+//           <Ionicons name="md-person" size={28} color="blue" />
+//           User2
+//           <Ionicons name="md-arrow-dropright" size={28} color="blue" />
+//         </Text>
+//         <Text
+//           style={{
+//             color: "black",
+//             fontSize: 18,
+//             textAlign: "center",
+//           }}
+//         >
+//           User2@mail.com
+//         </Text>
+//       </View>
+//       <View>
+//         <TouchableOpacity
+//           style={styles.button}
+//           onPress={() => navigation.navigate("Details")}
+//         >
+//           <Text style={styles.buttonText}>
+//             Share{" "}
+//             <Ionicons name="md-share" size={20} marginLeft={25} color="#fff" />
+//           </Text>
+//         </TouchableOpacity>
+//       </View>
+//     </ScrollView>
+//   );
+// }
 
 function UserScreen({ navigation }) {
   return (
@@ -155,7 +155,7 @@ function UserScreen({ navigation }) {
           marginTop: 35,
         }}
       >
-        Email ID: <Ionicons name="md-book" size={32} color="blue" />
+        <Ionicons name="md-book" size={32} color="blue" /> Email ID:
       </Text>
       <Text
         style={{

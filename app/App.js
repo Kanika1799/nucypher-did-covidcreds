@@ -13,18 +13,18 @@ import {
   Image,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import { Provider as PaperProvider } from "react-native-paper";
 
 import useCachedResources from "./hooks/useCachedResources";
 import BottomTabNavigator from "./navigation/BottomTabNavigator";
 import LinkingConfiguration from "./navigation/LinkingConfiguration";
 
 import CredentialsScreen from "./screens/CredentialScreen";
-import HomeScreen from './screens/CredentialScreen';
-import CredScreen from './screens/CredDetails';
-import UserScreen from './screens/UserScreen';
-import IssueScreen from './screens/IssuesScreen';
-import DetailsScreen from './screens/DetailsScreen';
-
+import HomeScreen from "./screens/CredentialScreen";
+import CredScreen from "./screens/CredDetails";
+import UserScreen from "./screens/UserScreen";
+import IssueScreen from "./screens/IssuesScreen";
+import DetailsScreen from "./screens/DetailsScreen";
 
 const Stack = createStackNavigator();
 
@@ -36,17 +36,19 @@ export default function App(props) {
   } else {
     return (
       <View style={styles.container}>
-        <NavigationContainer linking={LinkingConfiguration}>
-          <Stack.Navigator>
-            <Stack.Screen name="Root" component={BottomTabNavigator} />
-            <Stack.Screen name="Home" component={HomeScreen} />
-            <Stack.Screen name="Details" component={DetailsScreen} />
-            <Stack.Screen name="Credentials" component={CredentialsScreen} />
-            <Stack.Screen name="Issue" component={IssueScreen} />
-            <Stack.Screen name="Cred" component={CredScreen} />
-            <Stack.Screen name="User" component={UserScreen} />
-          </Stack.Navigator>
-        </NavigationContainer>
+        <PaperProvider>
+          <NavigationContainer linking={LinkingConfiguration}>
+            <Stack.Navigator>
+              <Stack.Screen name="Root" component={BottomTabNavigator} />
+              <Stack.Screen name="Home" component={HomeScreen} />
+              <Stack.Screen name="Details" component={DetailsScreen} />
+              <Stack.Screen name="Credentials" component={CredentialsScreen} />
+              <Stack.Screen name="Issue" component={IssueScreen} />
+              <Stack.Screen name="Cred" component={CredScreen} />
+              <Stack.Screen name="User" component={UserScreen} />
+            </Stack.Navigator>
+          </NavigationContainer>
+        </PaperProvider>
         <StatusBar style="auto" />
       </View>
     );

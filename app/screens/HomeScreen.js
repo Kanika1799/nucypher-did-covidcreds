@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import { ScrollView, TextInput } from "react-native-gesture-handler";
 import { Ionicons } from "@expo/vector-icons";
+import { Button, List, Headline, Subheading } from "react-native-paper";
 
 import { MonoText } from "../components/StyledText";
 import { createIconSet } from "@expo/vector-icons";
@@ -19,11 +20,27 @@ export default class HomeScreen extends React.Component {
     super(props);
 
     this.state = {
-      requests: [],
+      requests: [
+        {
+          request_from: "Adam",
+          cred_id: "ID 1",
+        },
+        {
+          request_from: "Ken",
+          cred_id: "ID 2",
+        },
+      ],
       access_shared: [],
     };
   }
+  state = {
+    expanded: true,
+  };
 
+  _handlePress = () =>
+    this.setState({
+      expanded: !this.state.expanded,
+    });
   componentDidMount() {
     fetch(
       "http://127.0.0.1:5000/get_requests/did:cred:5a13a432-bf10-11ea-aa79-f4d10855b531/1"
@@ -39,83 +56,62 @@ export default class HomeScreen extends React.Component {
     return (
       <View style={styles.container}>
         <View style={styles.container}>
-          <Text
-            style={{
-              color: "black",
-              fontSize: 28,
-              textAlign: "center",
-              marginTop: 35,
-            }}
-          >
-            Share My Credentials{" "}
-            <Ionicons name="md-share" size={32} color="blue" />
-          </Text>
-
-          <Text
-            style={{
-              color: "black",
-              fontSize: 18,
-              textAlign: "center",
-              marginTop: 25,
-            }}
-          >
-            <Ionicons name="md-clock" size={28} color="blue" /> Credentials
-            Access Requests
-          </Text>
-          {this.state.requests.map((request) => (
-            <Text
-              style={{
-                color: "black",
-                fontSize: 18,
-                marginLeft: 30,
-                marginTop: 25,
-              }}
-            >
-              <Ionicons name="md-person" size={28} color="blue" /> {"\n"}{" "}
-              Requested From - {request.request_from}
-              {"\n"}
-              Cred Requested - {request.cred_id}
-            </Text>
-          ))}
-          <Text
-            style={{
-              color: "black",
-              fontSize: 18,
-              textAlign: "center",
-              marginTop: 25,
-            }}
-          >
-            <Ionicons name="md-clock" size={28} color="blue" /> Credentials
-            Access Shared
-          </Text>
-          <Text
-            style={{
-              color: "black",
-              fontSize: 18,
-              marginLeft: 30,
-              marginTop: 25,
-            }}
-          >
-            <Ionicons name="md-person" size={28} color="blue" /> David{" "}
+          <Headline style={{ textAlign: "center", marginTop: 20 }}>
+            {" "}
+            Share My Credentials
             <Ionicons
-              name="md-arrow-down"
-              size={28}
-              color="blue"
-              marginLeft={30}
-              alignItems="right"
+              name="md-share"
+              size={22}
+              color="#6200ee"
+              paddingLeft={30}
             />
-          </Text>
+          </Headline>
+
+          <List.Accordion
+            style={{ marginTop: 40 }}
+            title="Credential Access Request"
+            left={(props) => <List.Icon {...props} icon="history" />}
+          >
+            {this.state.requests.map((request) => (
+              <List.Item
+                style={{ marginTop: 10, textAlign: "center" }}
+                title={`Requested From -  ${request.request_from}`}
+                description={`Cred Requested - ${request.cred_id}`}
+                left={(props) => (
+                  <List.Icon color="#6200ee" {...props} icon="account" />
+                )}
+              />
+            ))}
+          </List.Accordion>
+          <List.Accordion
+            title="Credential Request Shared"
+            left={(props) => <List.Icon {...props} icon="history" />}
+            expanded={this.state.expanded}
+            onPress={this._handlePress}
+          >
+            <List.Item
+              title="David"
+              left={(props) => <List.Icon {...props} icon="account" />}
+            />
+          </List.Accordion>
         </View>
 
-        <TouchableOpacity
-          onPress={() => alert("Hello, world!")}
-          style={styles.button}
+        <Button
+          icon="share"
+          mode="contained"
+          style={{
+            width: 140,
+            height: 40,
+            textAlign: "center",
+            marginBottom: 20,
+            borderRadius: 20,
+            marginStart: 110,
+          }}
+          onPress={() => console.log("Pressed")}
         >
-          <Text style={styles.buttonText}>
-            Share{" "}
-            <Ionicons name="md-share" size={20} marginLeft={25} color="#fff" />
-          </Text>
-        </TouchableOpacity>
+          {" "}
+          Share{" "}
+        </Button>
       </View>
     );
   }

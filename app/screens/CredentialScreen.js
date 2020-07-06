@@ -5,6 +5,7 @@ import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import { RectButton, ScrollView } from "react-native-gesture-handler";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
+import { Button, List, Headline, Subheading } from "react-native-paper";
 
 export default class CredentialsScreen extends React.Component {
   constructor(props) {
@@ -33,16 +34,16 @@ export default class CredentialsScreen extends React.Component {
         contentContainerStyle={styles.contentContainer}
       >
         <View style={styles.container}>
-          <Text
-            style={{
-              color: "black",
-              fontSize: 28,
-              textAlign: "center",
-              marginTop: 35,
-            }}
-          >
-            My Credentials <Ionicons name="md-book" size={32} color="blue" />
-          </Text>
+          <Headline style={{ textAlign: "center", marginTop: 20 }}>
+            {" "}
+            My Credentials
+            <Ionicons
+              name="md-card"
+              size={22}
+              color="#6200ee"
+              paddingLeft={30}
+            />
+          </Headline>
         </View>
 
         {this.state.creds.map((cred) => (
@@ -78,17 +79,23 @@ export default class CredentialsScreen extends React.Component {
           </View>
         ))}
 
-        <View>
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => this.props.navigation.navigate("Issue")}
-          >
-            <Text style={styles.buttonText}>
-              New Issue?{" "}
-              <Ionicons name="md-help" size={20} marginLeft={25} color="#fff" />
-            </Text>
-          </TouchableOpacity>
-        </View>
+        <Button
+          mode="contained"
+          icon="alert-circle-outline"
+          style={{
+            width: 140,
+            height: 40,
+            textAlign: "center",
+            marginBottom: 20,
+            borderRadius: 20,
+            marginStart: 110,
+            marginTop: 40,
+          }}
+          onPress={() => this.props.navigation.navigate("Issue")}
+        >
+          {" "}
+          New Issue?
+        </Button>
       </ScrollView>
       //   </Stack.Navigator>
       // </NavigationContainer>

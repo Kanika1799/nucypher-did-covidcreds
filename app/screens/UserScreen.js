@@ -3,7 +3,6 @@ import * as React from "react";
 import {
   StyleSheet,
   View,
-  Button,
   Text,
   ScrollView,
   TouchableOpacity,
@@ -12,7 +11,7 @@ import {
 } from "react-native";
 
 import { Ionicons } from "@expo/vector-icons";
-
+import { Button, List, Headline, Subheading } from "react-native-paper";
 
 export default class UserScreen extends React.Component {
   constructor(props) {
@@ -23,8 +22,6 @@ export default class UserScreen extends React.Component {
       <View style={styles.container}>
         <Text
           style={{
-            color: "black",
-
             textAlign: "center",
             marginTop: 15,
           }}
@@ -33,57 +30,50 @@ export default class UserScreen extends React.Component {
           <Ionicons
             name="md-person"
             size={40}
-            color="blue"
+            color="#6200ee"
             marginLeft={80}
             alignItems="centre"
           />
         </Text>
+        <Headline style={{ textAlign: "center" }}> User</Headline>
         <Text
           style={{
             color: "black",
-            fontSize: 28,
-            textAlign: "center",
-            marginTop: 5,
+            fontSize: 18,
+            marginLeft: 15,
+            marginTop: 35,
           }}
         >
-          User
+          <Ionicons name="md-mail" size={20} color="#6200ee" /> Email ID:
         </Text>
         <Text
           style={{
             color: "black",
             fontSize: 18,
-
+            marginLeft: 15,
             marginTop: 35,
           }}
         >
-          Email ID: <Ionicons name="md-book" size={32} color="blue" />
-        </Text>
-        <Text
-          style={{
-            color: "black",
-            fontSize: 18,
-
-            marginTop: 35,
-          }}
-        >
-          DID:
-          <Ionicons name="md-book" size={32} color="blue" />
+          <Ionicons name="md-person" size={20} color="#6200ee" /> DID:
         </Text>
         <View>
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => navigation.navigate("User")}
+          <Button
+            mode="contained"
+            icon="account-edit"
+            style={{
+              width: 140,
+              height: 40,
+              textAlign: "center",
+              marginBottom: 20,
+              borderRadius: 20,
+              marginStart: 110,
+              marginTop: 40,
+            }}
+            onPress={() => console.log("Pressed")}
           >
-            <Text style={styles.buttonText}>
-              Edit{" "}
-              <Ionicons
-                name="md-checkmark"
-                size={20}
-                marginLeft={25}
-                color="#fff"
-              />
-            </Text>
-          </TouchableOpacity>
+            {" "}
+            Edit
+          </Button>
         </View>
         {/* <Button
                 title="Go to Details... again"
@@ -95,45 +85,44 @@ export default class UserScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: "#fafafa",
-    },
-    contentContainer: {
-      paddingTop: 15,
-    },
-    optionIconContainer: {
-      marginRight: 12,
-    },
-    option: {
-      backgroundColor: "#fdfdfd",
-      paddingHorizontal: 15,
-      paddingVertical: 15,
-      borderWidth: StyleSheet.hairlineWidth,
-      borderBottomWidth: 0,
-      borderColor: "#ededed",
-    },
-    lastOption: {
-      borderBottomWidth: StyleSheet.hairlineWidth,
-    },
-    optionText: {
-      fontSize: 15,
-      alignSelf: "flex-start",
-      marginTop: 1,
-    },
-    button: {
-      backgroundColor: "blue",
-      padding: 20,
-      borderRadius: 5,
-      width: 130,
-      marginLeft: 120,
-      borderRadius: 25,
-      marginBottom: 25,
-    },
-    buttonText: {
-      fontSize: 20,
-      color: "#fff",
-      textAlign: "center",
-    },
-  });
-  
+  container: {
+    flex: 1,
+    backgroundColor: "#fafafa",
+  },
+  contentContainer: {
+    paddingTop: 15,
+  },
+  optionIconContainer: {
+    marginRight: 12,
+  },
+  option: {
+    backgroundColor: "#fdfdfd",
+    paddingHorizontal: 15,
+    paddingVertical: 15,
+    borderWidth: StyleSheet.hairlineWidth,
+    borderBottomWidth: 0,
+    borderColor: "#ededed",
+  },
+  lastOption: {
+    borderBottomWidth: StyleSheet.hairlineWidth,
+  },
+  optionText: {
+    fontSize: 15,
+    alignSelf: "flex-start",
+    marginTop: 1,
+  },
+  button: {
+    backgroundColor: "blue",
+    padding: 20,
+    borderRadius: 5,
+    width: 130,
+    marginLeft: 120,
+    borderRadius: 25,
+    marginBottom: 25,
+  },
+  buttonText: {
+    fontSize: 20,
+    color: "#fff",
+    textAlign: "center",
+  },
+});
