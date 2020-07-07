@@ -21,7 +21,7 @@ export default class CredScreen extends React.Component {
     console.log(props)
     this.state = {
       creds: [],
-      text: "Hello",
+      text: "",
     };
   }
 
@@ -61,15 +61,15 @@ export default class CredScreen extends React.Component {
             width: 70,
           }}
         >
-          {/* <QRCode
-            value={this.state.text}
+          <QRCode
+            value={this.props.route.params.cred_details.cred_status}
             size={200}
             bgColor="black"
             fgColor="white"
             textAlign="center"
             padding={60}
-          /> */}
-          <Image
+          />
+          {/* <Image
               source={{
                 uri:
                   "https://images.samsung.com/is/image/samsung/p5/au/faq/os-pie-updates/QR-code.png",
@@ -79,7 +79,7 @@ export default class CredScreen extends React.Component {
                 height: 200,
                 marginTop: 20,
               }}
-            />
+            /> */}
         </Card>
         {/* <Text
           style={{
