@@ -16,6 +16,16 @@ This ensures that only trusted parties(Identified by Their DIDs) are being prese
 
 Along with User's COVID Certificates, DIDs can also be used to store other information like Travel History, Job Status and Even Contact Tracing Data where all of that can be secured by Nucypher's Proxy ReEncryption Techniques.
 
+# Flow
+
+1. User and Institutions will create their DIDs and enter their Associated data.
+2. Institute will issue a certificate in the name of User by using his/her DID
+3. User will be able to view the Certificates and share it using QR code.
+4. Another institue will request for Certificate information from User
+5. User Can grant or refuse the certificate access.
+6. IF user grants the request institute can see the Credentials data.
+7. User can then Revoke the access or keep sharing it.
+
 ## Sample DID - 
 
 ```
@@ -62,3 +72,39 @@ https://youtu.be/W2b1iEug7X0
 https://imgur.com/a/SIbkzA8
 https://ibb.co/album/tpySMX
 
+# Deployment
+
+Steps to get started
+
+    Clone Code repository in the local machine
+    Install Python in local machine
+    Install pipenv Once installation is completed it's time to create python virtual environment for flask api to start working
+
+Follow these steps to activate virtual environment
+
+    Activate virual environment by executing pipenv shell from the api folder
+    Once activation is done run pip install -e . from the api
+   
+Configure Flask APP
+
+    Run export FLASK_APP=app.py
+    Run export FLASK_ENV=development 
+    Before running flask app, make sure alice and bob nodes are up.
+
+Setup Nucypher
+
+    Clone nucypher code repo
+    Activate virtual environment from nucypher folder
+    Do pip install -e .
+    Run ursula by running nucypher ursula run --dev --federated-only
+
+Run Flask App
+
+    Run flask app by running flask run
+    Flask API will start running on port 5000
+
+Run React App
+
+    Navigate to app folder
+    Run npm install
+    Run npm start
