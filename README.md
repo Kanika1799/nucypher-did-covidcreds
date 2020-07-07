@@ -53,15 +53,18 @@ Along with User's COVID Certificates, DIDs can also be used to store other infor
 
 ```
 
-## Screenshots 
+# App Working Demo Video
+
+https://youtu.be/W2b1iEug7X0
+
+# Screenshots 
 
 https://imgur.com/a/SIbkzA8
 
+![Screenshot](https://i.imgur.com/sw9HJ4T.png)
+![Screenshot](https://i.imgur.com/CQBhyO0.png)
+![Screenshot](https://i.imgur.com/syiPeaj.png)
+![Screenshot](https://i.imgur.com/3d9KrfZ.png)
+![Screenshot](https://i.imgur.com/PBC6Vlr.png)
+![Screenshot](https://i.imgur.com/9HV63Wf.png)
 
-
-
-
-
-## Demo Video 
-
-https://youtu.be/W2b1iEug7X0
