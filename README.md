@@ -30,6 +30,11 @@ Along with User's COVID Certificates, DIDs can also be used to store other infor
       "type": "RSA"
     }
   ], 
+
+
+
+
+
   "service": [
     {
       "serviceEndpoint": "http://127.0.0.1:5000/get_creds/did:cred:1a1cae3e-bfa4-11ea-8341-f4d10855b531", 
@@ -51,6 +56,11 @@ Along with User's COVID Certificates, DIDs can also be used to store other infor
 ## Screenshots 
 
 https://imgur.com/a/SIbkzA8
+
+
+
+
+
 
 ## Demo Video 
 
