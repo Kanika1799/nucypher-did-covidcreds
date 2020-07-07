@@ -13,12 +13,12 @@ import {
 } from "react-native";
 
 import { Ionicons } from "@expo/vector-icons";
-import { Avatar, Card, IconButton } from "react-native-paper";
+import { Avatar, Card, IconButton, Paragraph } from "react-native-paper";
 
 export default class CredScreen extends React.Component {
   constructor(props) {
     super(props);
-
+    console.log(props)
     this.state = {
       creds: [],
       text: "Hello",
@@ -30,7 +30,7 @@ export default class CredScreen extends React.Component {
       <View style={styles.container}>
         <Card.Title
           title="Credential Name"
-          subtitle="Name"
+          subtitle={this.props.route.params.cred_details.cred_name}
           right={(props) => (
             <Image
               source={{
@@ -46,7 +46,12 @@ export default class CredScreen extends React.Component {
             />
           )}
         />
-        <Card.Title title="Credential Issued By" subtitle="Issued By" />
+        <Card.Title title="Credential Issued By" subtitle={this.props.route.params.cred_details.cred_issued_from} />
+        <Card.Title title="Description"/>
+        <Card.Content><Paragraph>{this.props.route.params.cred_details.cred_description}</Paragraph></Card.Content>
+        <Card.Title title="Valid Till" subtitle={this.props.route.params.cred_details.cred_validity} />
+        <Card.Title title="Credential Status" subtitle={this.props.route.params.cred_details.cred_status} />
+        <Card.Title title="Share Credential" style={{textAlign: "center"}}/>
         <Card
           style={{
             marginTop: 40,
@@ -56,14 +61,25 @@ export default class CredScreen extends React.Component {
             width: 70,
           }}
         >
-          <QRCode
+          {/* <QRCode
             value={this.state.text}
             size={200}
             bgColor="black"
             fgColor="white"
             textAlign="center"
             padding={60}
-          />
+          /> */}
+          <Image
+              source={{
+                uri:
+                  "https://images.samsung.com/is/image/samsung/p5/au/faq/os-pie-updates/QR-code.png",
+              }}
+              style={{
+                width: 200,
+                height: 200,
+                marginTop: 20,
+              }}
+            />
         </Card>
         {/* <Text
           style={{

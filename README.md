@@ -47,3 +47,11 @@ Along with User's COVID Certificates, DIDs can also be used to store other infor
 }
 
 ```
+
+## Screenshots 
+
+https://imgur.com/a/SIbkzA8
+
+## Demo Video 
+
+https://youtu.be/W2b1iEug7X0

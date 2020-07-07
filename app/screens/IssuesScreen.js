@@ -42,6 +42,19 @@ export default class IssueScreen extends React.Component {
             height: 50,
             backgroundColor: "transparent",
           }}
+          label="Issued To"
+          type="outlined"
+          value={this.state.text}
+          onChangeText={(text) => this.setState({ text })}
+        />
+        <TextInput
+          style={{
+            width: 260,
+            marginLeft: 50,
+            marginTop: 20,
+            height: 50,
+            backgroundColor: "transparent",
+          }}
           label="Name"
           type="outlined"
           value={this.state.text}
@@ -81,20 +94,7 @@ export default class IssueScreen extends React.Component {
             height: 50,
             backgroundColor: "transparent",
           }}
-          label="Issued To"
-          type="outlined"
-          value={this.state.text}
-          onChangeText={(text) => this.setState({ text })}
-        />
-        <TextInput
-          style={{
-            width: 260,
-            marginLeft: 50,
-            marginTop: 20,
-            height: 50,
-            backgroundColor: "transparent",
-          }}
-          label="Issued From"
+          label="Issued Till Date"
           type="outlined"
           value={this.state.text}
           onChangeText={(text) => this.setState({ text })}

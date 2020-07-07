@@ -19,32 +19,23 @@ export default class CredentialsScreen extends React.Component {
     super(props);
 
     this.state = {
-      creds: [
-        {
-          cred_name: "This is first Cred",
-          cred_issued_from: "did:cred:401cd350-bf10-11ea-981f-f4d10855b531",
-        },
-        {
-          cred_name: "This is Second Cred",
-          cred_issued_from: "did:cred:401cd350-bf10-11ea-981f-f4d10855b531",
-        },
-      ],
+      creds: []
     };
   }
   state = {
     visible: true,
   };
 
-  //  componentDidMount() {
-  //    fetch(
-  //      "http://127.0.0.1:5000/get_creds/did:cred:5a13a432-bf10-11ea-aa79-f4d10855b531"
-  //    )
-  //      .then((resp) => resp.json())
-  //      .then((json) => {
-  //        this.setState({ creds: json });
-  //        console.log(json);
-  //      });
-  //  }
+   componentDidMount() {
+     fetch(
+       "http://127.0.0.1:5000/get_creds/did:cred:cf43b35c-bfd6-11ea-bc26-f4d10855b531"
+     )
+       .then((resp) => resp.json())
+       .then((json) => {
+         this.setState({ creds: json });
+         console.log(json);
+       });
+   }
 
   render() {
     return (
@@ -66,8 +57,10 @@ export default class CredentialsScreen extends React.Component {
         </View>
 
         {this.state.creds.map((cred) => (
-          <View style={styles.container}>
-            <Card style={{ marginTop: 20, marginStart: 20, width: 320 }}>
+            <Card style={{ marginTop: 20, marginStart: 20, width: 320 }} onPress={() => this.props.navigation.navigate("Cred", {
+              cred_details: cred,
+            })}>
+            <Card.Content>
               <Text
                 style={{
                   color: "black",
@@ -75,33 +68,38 @@ export default class CredentialsScreen extends React.Component {
                   marginTop: 15,
                   marginLeft: 15,
                 }}
-                onPress={() => this.props.navigation.navigate("Cred")}
               >
                 {cred.cred_name} {"\n"}{" "}
               </Text>
               <Text style={{ marginBottom: 15, marginLeft: 15 }}>
-                Cred Issued From :- {cred.cred_issued_from}
+                Cred Issued From :- {cred.cred_issued_from} {"\n"}{" "}
               </Text>
+              <Text style={{ marginBottom: 15, marginLeft: 15 }}>
+                Cred Status :- {cred.cred_status} {"\n"}{" "}
+              </Text>
+              <Text style={{ marginBottom: 15, marginLeft: 15 }}>
+                Cred Validity :- {cred.cred_validity}{"\n"}{" "}
+              </Text>
+            </Card.Content>
             </Card>
-          </View>
         ))}
 
         <Button
           mode="contained"
           icon="alert-circle-outline"
           style={{
-            width: 140,
+            width: 240,
             height: 40,
             textAlign: "center",
             marginBottom: 20,
             borderRadius: 20,
-            marginStart: 110,
+            marginStart: 65,
             marginTop: 40,
           }}
           onPress={() => this.props.navigation.navigate("Issue")}
         >
           {" "}
-          New Issue?
+          Issue Credential
         </Button>
       </ScrollView>
       //   </Stack.Navigator>
